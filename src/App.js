@@ -2,9 +2,14 @@ import "./App.css";
 import ParticlesBackground from "./components/Particles/ParticlesBackground";
 
 function App() {
-  return <div className="App">
-    <ParticlesBackground />
-  </div>;
+  return (
+    <>
+      <ParticlesBackground />
+      <div>
+        <h1>Helloooooooooooooo</h1>
+      </div>
+    </>
+  );
 }
 
 export default App;
