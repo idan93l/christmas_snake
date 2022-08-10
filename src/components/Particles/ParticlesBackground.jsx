@@ -1,5 +1,6 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import background from "../../assests/christmas_background.png"
 
 const ParticlesBackground = () => {
   const particlesInit = async (main) => {
@@ -121,7 +122,7 @@ const ParticlesBackground = () => {
           "retina_detect": true,
           "background": {
               "color": "#282c34",
-              "image": "",
+              "image": "../../assests/christmas_background.png",
               "position": "50% 50%",
               "repeat": "no-repeat",
               "size": "cover"
