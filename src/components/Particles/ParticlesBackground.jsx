@@ -121,8 +121,8 @@ const ParticlesBackground = () => {
           },
           "retina_detect": true,
           "background": {
-              "color": "#282c34",
-              "image": "../../assests/christmas_background.png",
+              "color": "",
+              "image": "",
               "position": "50% 50%",
               "repeat": "no-repeat",
               "size": "cover"
