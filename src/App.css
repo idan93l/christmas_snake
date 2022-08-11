@@ -13,3 +13,7 @@ body {
 	font-family: 'Press Start 2P', cursive;
 	background-image: url("./assests/christmas_background.png");
 }
+
+.testingColors {
+	color: rgba(46, 37, 37, 0.677);
+}
