@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { useEffect } from "react";
 import * as Style from "./Canvas.style";
 
-const size = 1000;
+const size = 600;
 
 const Canvas = forwardRef(({ draw, ...props }, canvasRef) => {
   useEffect(() => {
