@@ -32,7 +32,7 @@ const useGameLogic = ({
   const [presentPosition, setPresentPosition] = useState();
   // const [presentPosition, setPresentPosition] = useState([{ x: 440, y: 440 }]);
   const { Up, Down, Left, Right } = Direction;
-  const { Running, Game_Over, Paused } = GameState;
+  const { Running } = GameState;
   const { moveUp, moveDown, moveLeft, moveRight } = createSnakeMovements();
   const snakeHeadPosition = snakeBody[snakeBody.length - 1];
 
