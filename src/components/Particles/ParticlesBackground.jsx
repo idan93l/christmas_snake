@@ -4,12 +4,10 @@ import background from "../../assests/christmas_background.png"
 
 const ParticlesBackground = () => {
   const particlesInit = async (main) => {
-    // console.log(main);
     await loadFull(main);
   };
 
   const particlesLoaded = (container) => {
-    // console.log(container);
   };
 
   return (
@@ -79,17 +77,6 @@ const ParticlesBackground = () => {
               }
           },
           "interactivity": {
-              "events": {
-                  "onhover": {
-                      "enable": true,
-                      "mode": "bubble"
-                  },
-                  "onclick": {
-                      "enable": true,
-                      "mode": "repulse"
-                  },
-                  "resize": true
-              },
               "modes": {
                   "grab": {
                       "distance": 400,
