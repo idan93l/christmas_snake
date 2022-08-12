@@ -1,6 +1,7 @@
 import useInterval from "use-interval";
 import { useState } from "react";
 import createSnakeMovements from "./movements";
+import { SEGMENT_SIZE } from "../Canvas/draw";
 
 const Direction = {
   Up: "Up",
@@ -11,11 +12,14 @@ const Direction = {
 
 const MOVEMENT_SPEED = 100;
 
-const useGameLogic = () => {
+const useGameLogic = ({ canvasHeight, canvasWidth }) => {
   const [direction, setDirection] = useState();
   const [snakeBody, setSnakeBody] = useState([{ x: 0, y: 0 }]);
   const { Up, Down, Left, Right } = Direction;
   const { moveUp, moveDown, moveLeft, moveRight } = createSnakeMovements();
+  const snakeHeadPosition = snakeBody[snakeBody.length - 1];
+
+  console.log(canvasHeight, canvasWidth);
 
   const onKeyDownHandler = (e) => {
     switch (e.code) {
@@ -40,23 +44,48 @@ const useGameLogic = () => {
         }
         break;
     }
-    console.log(e.code);
+    // console.log(e.code);
   };
 
   const moveSnake = () => {
+    const { x, y } = snakeHeadPosition;
     let snakeBodyAfterMovement;
     switch (direction) {
       case Up:
-        snakeBodyAfterMovement = moveUp(snakeBody);
+        if (y > 0) {
+          snakeBodyAfterMovement = moveUp(snakeBody);
+        } else if (canvasWidth && x > canvasWidth / 2) {
+          setDirection(Left);
+        } else {
+          setDirection(Right);
+        }
         break;
       case Down:
-        snakeBodyAfterMovement = moveDown(snakeBody);
+        if (canvasHeight && y < canvasHeight - SEGMENT_SIZE) {
+          snakeBodyAfterMovement = moveDown(snakeBody);
+        } else if (canvasWidth && x > canvasWidth / 2) {
+          setDirection(Left);
+        } else {
+          setDirection(Right);
+        }
         break;
       case Left:
-        snakeBodyAfterMovement = moveLeft(snakeBody);
+        if (x > 0) {
+          snakeBodyAfterMovement = moveLeft(snakeBody);
+        } else if (canvasHeight && y < canvasHeight / 2) {
+          setDirection(Down);
+        } else {
+          setDirection(Up);
+        }
         break;
       case Right:
-        snakeBodyAfterMovement = moveRight(snakeBody);
+        if (canvasWidth && x < canvasWidth - SEGMENT_SIZE) {
+          snakeBodyAfterMovement = moveRight(snakeBody);
+        } else if (canvasHeight && y < canvasHeight / 2) {
+          setDirection(Down);
+        } else {
+          setDirection(Up);
+        }
         break;
     }
     if (snakeBodyAfterMovement) {

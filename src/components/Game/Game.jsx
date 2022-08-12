@@ -8,7 +8,10 @@ import useGameLogic from "./useGameLogic";
 const Game = () => {
   const canvasRef = useRef(null);
 
-  const { snakeBody, onKeyDownHandler } = useGameLogic();
+  const { snakeBody, onKeyDownHandler } = useGameLogic({
+    canvasHeight: canvasRef.current?.height,
+    canvasWidth: canvasRef.current?.width
+  });
 
   const drawGame = (ctx) => {
     draw({ ctx, snakeBody });
