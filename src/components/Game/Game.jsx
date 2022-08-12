@@ -13,11 +13,21 @@ export const GameState = {
 const Game = () => {
   const { Running, Game_Over, Paused } = GameState;
   const [gameState, setGameState] = useState(Running);
+  const [score, setScore] = useState(0);
   const canvasRef = useRef(null);
 
+  const handleSetScore = () => {
+    if (score > Number(localStorage.getItem("snakeScore"))) {
+      localStorage.setItem("snakeScore", JSON.stringify(score));
+    }
+  };
+
   const onGameOver = () => {
+    handleSetScore();
+    setScore(0)
     setGameState(Game_Over);
   };
+
 
   const { snakeBody, onKeyDownHandler, presentPosition, resetGameState } =
     useGameLogic({
@@ -25,7 +35,11 @@ const Game = () => {
       canvasWidth: canvasRef.current?.width,
       gameState,
       onGameOver,
+      score,
+      setScore,
+      handleSetScore,
     });
+  console.log(score);
 
   const drawGame = (ctx) => {
     draw({ ctx, snakeBody, presentPosition });
@@ -52,7 +66,12 @@ const Game = () => {
           {gameState === Running ? "PAUSE" : "PLAY"}
         </button>
       )}
-      <Score>{`CURRENT SCORE: ${(snakeBody.length - 1) * 10}`}</Score>
+      <Score>{`SCORE: ${score}`}</Score>
+      <Score>{`HIGHSCORE: ${
+        !localStorage.getItem("snakeScore")
+          ? 0
+          : localStorage.getItem("snakeScore")
+      }`}</Score>
     </GameWrapper>
   );
 };

@@ -18,13 +18,21 @@ export const Direction = {
 
 const MOVEMENT_SPEED = 100;
 
-const useGameLogic = ({ canvasHeight, canvasWidth, gameState, onGameOver }) => {
+const useGameLogic = ({
+  canvasHeight,
+  canvasWidth,
+  gameState,
+  onGameOver,
+  score,
+  setScore,
+  handleSetScore,
+}) => {
   const [direction, setDirection] = useState();
   const [snakeBody, setSnakeBody] = useState([{ x: 280, y: 440 }]);
   const [presentPosition, setPresentPosition] = useState();
   // const [presentPosition, setPresentPosition] = useState([{ x: 440, y: 440 }]);
   const { Up, Down, Left, Right } = Direction;
-  const {Running, Game_Over, Paused} = GameState;
+  const { Running, Game_Over, Paused } = GameState;
   const { moveUp, moveDown, moveLeft, moveRight } = createSnakeMovements();
   const snakeHeadPosition = snakeBody[snakeBody.length - 1];
 
@@ -163,6 +171,8 @@ const useGameLogic = ({ canvasHeight, canvasWidth, gameState, onGameOver }) => {
         }),
         y: randomPositionOnGrid({ threshold: canvasHeight }),
       });
+      setScore(score + 10);
+      handleSetScore();
     } else if (snakeBodyAfterMovement) {
       setSnakeBody(snakeBodyAfterMovement);
     }
