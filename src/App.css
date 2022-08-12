@@ -17,3 +17,9 @@ body {
 .testingColors {
 	color: rgba(46, 37, 37, 0.677);
 }
+
+#present, #snake {
+	/* height:100px;
+	width: 100px; */
+	display: none;
+}
