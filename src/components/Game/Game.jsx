@@ -3,6 +3,11 @@ import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
 import { GameWrapper, Score } from "./Game.style";
 import useGameLogic from "./useGameLogic";
+import {
+  NavButton,
+  NavButtonsWrapper,
+  NavButtonsInnerWrapper,
+} from "../NavigationButton/NavButton.style";
 
 export const GameState = {
   Running: "Running",
@@ -24,22 +29,29 @@ const Game = () => {
 
   const onGameOver = () => {
     handleSetScore();
-    setScore(0)
+    setScore(0);
     setGameState(Game_Over);
   };
 
-
-  const { snakeBody, onKeyDownHandler, presentPosition, resetGameState } =
-    useGameLogic({
-      canvasHeight: canvasRef.current?.height,
-      canvasWidth: canvasRef.current?.width,
-      gameState,
-      onGameOver,
-      score,
-      setScore,
-      handleSetScore,
-    });
-  console.log(score);
+  const {
+    snakeBody,
+    onKeyDownHandler,
+    presentPosition,
+    resetGameState,
+    handleUp,
+    handleDown,
+    handleLeft,
+    handleRight,
+  } = useGameLogic({
+    canvasHeight: canvasRef.current?.height,
+    canvasWidth: canvasRef.current?.width,
+    gameState,
+    onGameOver,
+    score,
+    setScore,
+    handleSetScore,
+  });
+  console.log(snakeBody);
 
   const drawGame = (ctx) => {
     draw({ ctx, snakeBody, presentPosition });
@@ -72,6 +84,16 @@ const Game = () => {
           ? 0
           : localStorage.getItem("snakeScore")
       }`}</Score>
+      <NavButtonsWrapper>
+        <NavButton onClick={handleUp}>UP</NavButton>
+        <hr />
+        <NavButtonsInnerWrapper>
+        <NavButton onClick={handleLeft}>LEFT</NavButton>
+        <NavButton onClick={handleRight}>RIGHT</NavButton>
+        </NavButtonsInnerWrapper>
+        <hr />
+        <NavButton onClick={handleDown}>DOWN</NavButton>
+      </NavButtonsWrapper>
     </GameWrapper>
   );
 };

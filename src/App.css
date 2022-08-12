@@ -15,7 +15,8 @@ body {
 }
 
 .testingColors {
-	color: rgba(46, 37, 37, 0.677);
+	color: rgba(23, 22, 22, 0.9);
+	color: rgba(85, 4, 4, 0.73);
 }
 
 #present, #snake {

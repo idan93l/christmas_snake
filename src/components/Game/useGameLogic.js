@@ -107,6 +107,52 @@ const useGameLogic = ({
     // console.log(e.code);
   };
 
+  const handleUp = () => {
+    if (direction !== Direction.Down) {
+      setDirection(Up);
+    }
+  };
+  const handleDown = () => {
+    if (direction !== Direction.Up) {
+      setDirection(Down);
+    }
+  };
+  const handleLeft = () => {
+    if (direction !== Direction.Right) {
+      setDirection(Left);
+    }
+  };
+  const handleRight = () => {
+    if (direction !== Direction.Left) {
+      setDirection(Right);
+    }
+  };
+
+  // const navButtonHandler = (num) => {
+  //   switch (num) {
+  //     case 1:
+  //       if (direction !== Direction.Down) {
+  //         setDirection(Up);
+  //       }
+  //       break;
+  //     case 2:
+  //       if (direction !== Direction.Up) {
+  //         setDirection(Down);
+  //       }
+  //       break;
+  //     case 3:
+  //       if (direction !== Direction.Right) {
+  //         setDirection(Left);
+  //       }
+  //       break;
+  //     case 4:
+  //       if (direction !== Direction.Left) {
+  //         setDirection(Right);
+  //       }
+  //       break;
+  //   }
+  // };
+
   const moveSnake = () => {
     let snakeBodyAfterMovement;
     switch (direction) {
@@ -180,7 +226,16 @@ const useGameLogic = ({
 
   useInterval(moveSnake, gameState === Running ? MOVEMENT_SPEED : null);
 
-  return { snakeBody, onKeyDownHandler, presentPosition, resetGameState };
+  return {
+    snakeBody,
+    onKeyDownHandler,
+    presentPosition,
+    resetGameState,
+    handleUp,
+    handleDown,
+    handleLeft,
+    handleRight,
+  };
 };
 
 export default useGameLogic;
