@@ -23,7 +23,7 @@ export const GameState = {
   Paused: "Paused",
 };
 
-const Game = ({player}) => {
+const Game = ({ player }) => {
   const { Start, Running, Game_Over, Paused } = GameState;
   const [gameState, setGameState] = useState(Start);
   const [score, setScore] = useState(0);
@@ -71,42 +71,42 @@ const Game = ({player}) => {
       <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
         <Canvas ref={canvasRef} draw={drawGame} />
         <MiddleWrapper>
-        {gameState === Game_Over ? (
-          <PlayButton
-            onClick={() => {
-              setGameState(Running);
-              resetGameState();
-              handleRight();
-            }}
-          >
-            PLAY AGAIN
-          </PlayButton>
-        ) : (
-          <PlayButton
-            onClick={() => {
-              if (gameState === Start) {
+          {gameState === Game_Over ? (
+            <PlayButton
+              onClick={() => {
                 setGameState(Running);
+                resetGameState();
                 handleRight();
-              } else {
-                setGameState(gameState === Running ? Paused : Running);
-              }
-            }}
-          >
-            {gameState === Start
-              ? "START"
-              : gameState === Running
-              ? "PAUSE"
-              : "PLAY"}
-          </PlayButton>
-        )}
-        <ScoreWrapper>
-          <Score>{`SCORE:${score}`}</Score>
-          <Score>{`HIGHSCORE:${
-            !localStorage.getItem("snakeScore")
-              ? 0
-              : localStorage.getItem("snakeScore")
-          }`}</Score>
-        </ScoreWrapper>
+              }}
+            >
+              PLAY AGAIN
+            </PlayButton>
+          ) : (
+            <PlayButton
+              onClick={() => {
+                if (gameState === Start) {
+                  setGameState(Running);
+                  handleRight();
+                } else {
+                  setGameState(gameState === Running ? Paused : Running);
+                }
+              }}
+            >
+              {gameState === Start
+                ? "START"
+                : gameState === Running
+                ? "PAUSE"
+                : "PLAY"}
+            </PlayButton>
+          )}
+          <ScoreWrapper>
+            <Score>{`SCORE:${score}`}</Score>
+            <Score>{`HIGHSCORE:${
+              !localStorage.getItem("snakeScore")
+                ? 0
+                : localStorage.getItem("snakeScore")
+            }`}</Score>
+          </ScoreWrapper>
         </MiddleWrapper>
         <NavButtonsWrapper>
           <NavButton onClick={handleUp}>
