@@ -8,6 +8,7 @@ import {
 import { SEGMENT_SIZE } from "../Canvas/draw";
 import { randomPositionOnGrid } from "../../utils/randomPositionOnGrid";
 import { GameState } from "./Game";
+import * as Tone from "tone";
 
 export const Direction = {
   Up: "Up",
@@ -17,6 +18,8 @@ export const Direction = {
 };
 
 const MOVEMENT_SPEED = 100;
+
+const eatPresentSound = new Tone.Player("/sounds/bell.mp3").toDestination();
 
 const useGameLogic = ({
   canvasHeight,
@@ -178,6 +181,7 @@ const useGameLogic = ({
       });
       setScore(score + 10);
       handleSetScore();
+      eatPresentSound.start();
     } else if (snakeBodyAfterMovement) {
       setSnakeBody(snakeBodyAfterMovement);
     }

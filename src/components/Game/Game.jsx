@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import * as Tone from "tone";
 import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
 import { GameWrapper, MiddleWrapper, PlayButton } from "./Game.style";
@@ -15,6 +16,7 @@ import {
   TbArrowBigRight,
   TbArrowBigTop,
 } from "react-icons/tb";
+import { useEffect } from "react";
 
 export const GameState = {
   Start: "Start",
@@ -23,13 +25,20 @@ export const GameState = {
   Paused: "Paused",
 };
 
-const Game = ({ player }) => {
+const gameOverSound = new Tone.Player("/sounds/santa.mp3").toDestination();
+const startSong = new Tone.Player("/sounds/lalala.mp3").toDestination();
+
+const Game = () => {
   const { Start, Running, Game_Over, Paused } = GameState;
   const [gameState, setGameState] = useState(Start);
   const [score, setScore] = useState(0);
   const canvasRef = useRef(null);
 
-  console.log(gameState);
+  useEffect(() => {
+    if (gameState === Game_Over) {
+      gameOverSound.start();
+    }
+  }, [gameState])
 
   const handleSetScore = () => {
     if (score > Number(localStorage.getItem("snakeScore"))) {
@@ -77,6 +86,7 @@ const Game = ({ player }) => {
                 setGameState(Running);
                 resetGameState();
                 handleRight();
+                startSong.start();
               }}
             >
               PLAY AGAIN
@@ -87,6 +97,7 @@ const Game = ({ player }) => {
                 if (gameState === Start) {
                   setGameState(Running);
                   handleRight();
+                  startSong.start();
                 } else {
                   setGameState(gameState === Running ? Paused : Running);
                 }
