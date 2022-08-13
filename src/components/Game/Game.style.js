@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const GameWrapper = styled.div`
-  width: 100%auto;
+  height: 100vh;
+  width: 100vw;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   outline: none;

@@ -1,6 +1,5 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import background from "../../assests/christmas_background.png"
 
 const ParticlesBackground = () => {
   const particlesInit = async (main) => {

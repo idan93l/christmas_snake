@@ -1,7 +1,7 @@
 import "./App.css";
 import Game from "./components/Game/Game";
 import ParticlesBackground from "./components/Particles/ParticlesBackground";
-import presentLogo from "./assests/pinkPresent.png";
+import presentLogo from "./assests/greenPresent.png";
 import snake from "./assests/snake.png"
 
 function App() {

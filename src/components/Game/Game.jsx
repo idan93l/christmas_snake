@@ -8,6 +8,8 @@ import {
   NavButtonsWrapper,
   NavButtonsInnerWrapper,
 } from "../NavigationButton/NavButton.style";
+import { TbArrowBigDown, TbArrowBigLeft, TbArrowBigRight, TbArrowBigTop } from "react-icons/tb";
+
 
 export const GameState = {
   Running: "Running",
@@ -85,14 +87,14 @@ const Game = () => {
           : localStorage.getItem("snakeScore")
       }`}</Score>
       <NavButtonsWrapper>
-        <NavButton onClick={handleUp}>UP</NavButton>
+        <NavButton onClick={handleUp}><TbArrowBigTop /></NavButton>
         <hr />
         <NavButtonsInnerWrapper>
-        <NavButton onClick={handleLeft}>LEFT</NavButton>
-        <NavButton onClick={handleRight}>RIGHT</NavButton>
+        <NavButton onClick={handleLeft}><TbArrowBigLeft /></NavButton>
+        <NavButton onClick={handleRight}><TbArrowBigRight /></NavButton>
         </NavButtonsInnerWrapper>
         <hr />
-        <NavButton onClick={handleDown}>DOWN</NavButton>
+        <NavButton onClick={handleDown}><TbArrowBigDown /></NavButton>
       </NavButtonsWrapper>
     </GameWrapper>
   );
