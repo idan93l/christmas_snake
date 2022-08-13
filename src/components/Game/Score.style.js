@@ -8,7 +8,7 @@ export const Score = styled.div`
 `;
 
 export const ScoreWrapper = styled.div`
-  height: 85%;
+  height: 88%;
   width: 65%;
   display: flex;
   justify-content: space-evenly;
