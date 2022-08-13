@@ -9,27 +9,28 @@ export const NavButton = styled.button`
   flex-direction: column;
   font-size: 40px;
   color: whitesmoke;
-  background-color: rgb(85, 4, 4);
+  background-color: rgba(85, 4, 4, 0.826);
   border: 3px solid whitesmoke;
   border-radius: 20px;
-  outline: 3px solid rgb(192,20,58);
-  box-shadow: 0 0 0 6px rgb(105,168,151);
+  outline: 3px solid rgb(192, 20, 58);
+  box-shadow: 0 0 0 6px rgb(105, 168, 151);
 `;
 
 export const NavButtonsWrapper = styled.div`
-  width: 100%auto;
+  height: 180px;
+  width: 200px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   outline: none;
-  border: 1px solid yellow;
 `;
 
 export const NavButtonsInnerWrapper = styled.div`
+  width: 180px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
   outline: none;
-  border: 1px solid yellow;
 `;

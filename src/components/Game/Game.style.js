@@ -9,9 +9,3 @@ export const GameWrapper = styled.div`
   flex-direction: column;
   outline: none;
   `;
-
-export const Score = styled.h1`
-  background: linear-gradient(to left, #753ad5, #d53a9d);
-  --webkit-background-clip: text;
-  --webkit-text-fill-color: transparent;
-`;

@@ -1,15 +1,20 @@
 import { useState, useRef } from "react";
 import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
-import { GameWrapper, Score } from "./Game.style";
+import { GameWrapper } from "./Game.style";
+import { Score, ScoreWrapper } from "./Score.style";
 import useGameLogic from "./useGameLogic";
 import {
   NavButton,
   NavButtonsWrapper,
   NavButtonsInnerWrapper,
 } from "../NavigationButton/NavButton.style";
-import { TbArrowBigDown, TbArrowBigLeft, TbArrowBigRight, TbArrowBigTop } from "react-icons/tb";
-
+import {
+  TbArrowBigDown,
+  TbArrowBigLeft,
+  TbArrowBigRight,
+  TbArrowBigTop,
+} from "react-icons/tb";
 
 export const GameState = {
   Running: "Running",
@@ -60,43 +65,53 @@ const Game = () => {
 
   return (
     <>
-    <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
-      <Canvas ref={canvasRef} draw={drawGame} />
-      {gameState === Game_Over ? (
-        <button
-          onClick={() => {
-            setGameState(Running);
-            resetGameState();
-          }}
-        >
-          PLAY AGAIN
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setGameState(gameState === Running ? Paused : Running);
-          }}
-        >
-          {gameState === Running ? "PAUSE" : "PLAY"}
-        </button>
-      )}
-      <Score>{`SCORE: ${score}`}</Score>
-      <Score>{`HIGHSCORE: ${
-        !localStorage.getItem("snakeScore")
-          ? 0
-          : localStorage.getItem("snakeScore")
-      }`}</Score>
-      <NavButtonsWrapper>
-        <NavButton onClick={handleUp}><TbArrowBigTop /></NavButton>
-        <hr />
-        <NavButtonsInnerWrapper>
-        <NavButton onClick={handleLeft}><TbArrowBigLeft /></NavButton>
-        <NavButton onClick={handleRight}><TbArrowBigRight /></NavButton>
-        </NavButtonsInnerWrapper>
-        <hr />
-        <NavButton onClick={handleDown}><TbArrowBigDown /></NavButton>
-      </NavButtonsWrapper>
-    </GameWrapper>
+      <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
+        <Canvas ref={canvasRef} draw={drawGame} />
+        {gameState === Game_Over ? (
+          <button
+            onClick={() => {
+              setGameState(Running);
+              resetGameState();
+            }}
+          >
+            PLAY AGAIN
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setGameState(gameState === Running ? Paused : Running);
+            }}
+          >
+            {gameState === Running ? "PAUSE" : "PLAY"}
+          </button>
+        )}
+        <ScoreWrapper>
+          <Score>{`SCORE:${score}`}</Score>
+          <Score>{`HIGHSCORE:${
+            !localStorage.getItem("snakeScore")
+              ? 0
+              : localStorage.getItem("snakeScore")
+          }`}</Score>
+        </ScoreWrapper>
+        <NavButtonsWrapper>
+          <NavButton onClick={handleUp}>
+            <TbArrowBigTop />
+          </NavButton>
+          <hr />
+          <NavButtonsInnerWrapper>
+            <NavButton onClick={handleLeft}>
+              <TbArrowBigLeft />
+            </NavButton>
+            <NavButton onClick={handleRight}>
+              <TbArrowBigRight />
+            </NavButton>
+          </NavButtonsInnerWrapper>
+          <hr />
+          <NavButton onClick={handleDown}>
+            <TbArrowBigDown />
+          </NavButton>
+        </NavButtonsWrapper>
+      </GameWrapper>
     </>
   );
 };
