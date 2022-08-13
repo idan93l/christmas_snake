@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const NavButton = styled.button`
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@ export const NavButton = styled.button`
 `;
 
 export const NavButtonsWrapper = styled.div`
-  height: 220px;
+  height: 160px;
   width: 200px;
   display: flex;
   justify-content: space-around;
@@ -27,7 +27,7 @@ export const NavButtonsWrapper = styled.div`
 `;
 
 export const NavButtonsInnerWrapper = styled.div`
-  width: 220px;
+  width: 225px;
   display: flex;
   justify-content: space-between;
   align-items: center;

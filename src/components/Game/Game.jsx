@@ -128,14 +128,14 @@ const Game = () => {
             <NavButton onClick={handleLeft}>
               <TbArrowBigLeft />
             </NavButton>
+          <NavButton onClick={handleDown}>
+            <TbArrowBigDown />
+          </NavButton>
             <NavButton onClick={handleRight}>
               <TbArrowBigRight />
             </NavButton>
           </NavButtonsInnerWrapper>
           <hr />
-          <NavButton onClick={handleDown}>
-            <TbArrowBigDown />
-          </NavButton>
         </NavButtonsWrapper>
       </GameWrapper>
     </>
