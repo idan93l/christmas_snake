@@ -53,13 +53,13 @@ const Game = () => {
     setScore,
     handleSetScore,
   });
-  console.log(snakeBody);
 
   const drawGame = (ctx) => {
     draw({ ctx, snakeBody, presentPosition });
   };
 
   return (
+    <>
     <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
       <Canvas ref={canvasRef} draw={drawGame} />
       {gameState === Game_Over ? (
@@ -97,6 +97,7 @@ const Game = () => {
         <NavButton onClick={handleDown}><TbArrowBigDown /></NavButton>
       </NavButtonsWrapper>
     </GameWrapper>
+    </>
   );
 };
 

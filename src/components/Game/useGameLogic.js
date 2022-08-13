@@ -51,7 +51,6 @@ const useGameLogic = ({
     setSnakeBody([{ x: 280, y: 440 }]);
   };
 
-  // console.log(canvasHeight, canvasWidth);
   useEffect(() => {
     if (!canvasHeight || !canvasWidth) {
       return;
@@ -104,7 +103,6 @@ const useGameLogic = ({
         }
         break;
     }
-    // console.log(e.code);
   };
 
   const handleUp = () => {
