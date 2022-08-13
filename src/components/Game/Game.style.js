@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const GameWrapper = styled.div`
-  height: 90vh;
+  height: 95vh;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
