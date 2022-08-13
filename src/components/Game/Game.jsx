@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
-import { GameWrapper } from "./Game.style";
+import { GameWrapper, MiddleWrapper, PlayButton } from "./Game.style";
 import { Score, ScoreWrapper } from "./Score.style";
 import useGameLogic from "./useGameLogic";
 import {
@@ -17,16 +17,19 @@ import {
 } from "react-icons/tb";
 
 export const GameState = {
+  Start: "Start",
   Running: "Running",
   Game_Over: "Game_Over",
   Paused: "Paused",
 };
 
-const Game = () => {
-  const { Running, Game_Over, Paused } = GameState;
-  const [gameState, setGameState] = useState(Running);
+const Game = ({player}) => {
+  const { Start, Running, Game_Over, Paused } = GameState;
+  const [gameState, setGameState] = useState(Start);
   const [score, setScore] = useState(0);
   const canvasRef = useRef(null);
+
+  console.log(gameState);
 
   const handleSetScore = () => {
     if (score > Number(localStorage.getItem("snakeScore"))) {
@@ -67,23 +70,34 @@ const Game = () => {
     <>
       <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
         <Canvas ref={canvasRef} draw={drawGame} />
+        <MiddleWrapper>
         {gameState === Game_Over ? (
-          <button
+          <PlayButton
             onClick={() => {
               setGameState(Running);
               resetGameState();
+              handleRight();
             }}
           >
             PLAY AGAIN
-          </button>
+          </PlayButton>
         ) : (
-          <button
+          <PlayButton
             onClick={() => {
-              setGameState(gameState === Running ? Paused : Running);
+              if (gameState === Start) {
+                setGameState(Running);
+                handleRight();
+              } else {
+                setGameState(gameState === Running ? Paused : Running);
+              }
             }}
           >
-            {gameState === Running ? "PAUSE" : "PLAY"}
-          </button>
+            {gameState === Start
+              ? "START"
+              : gameState === Running
+              ? "PAUSE"
+              : "PLAY"}
+          </PlayButton>
         )}
         <ScoreWrapper>
           <Score>{`SCORE:${score}`}</Score>
@@ -93,6 +107,7 @@ const Game = () => {
               : localStorage.getItem("snakeScore")
           }`}</Score>
         </ScoreWrapper>
+        </MiddleWrapper>
         <NavButtonsWrapper>
           <NavButton onClick={handleUp}>
             <TbArrowBigTop />

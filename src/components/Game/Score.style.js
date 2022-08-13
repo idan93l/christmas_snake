@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const Score = styled.div`
   display: flex;
   justify-content: center;
+  font-size: 14px;
   color: whitesmoke;
 `;
 
 export const ScoreWrapper = styled.div`
-  height: 60px;
-  width: 240px;
+  height: 100%;
+  width: 65%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

@@ -30,7 +30,6 @@ const useGameLogic = ({
   const [direction, setDirection] = useState();
   const [snakeBody, setSnakeBody] = useState([{ x: 280, y: 440 }]);
   const [presentPosition, setPresentPosition] = useState();
-  // const [presentPosition, setPresentPosition] = useState([{ x: 440, y: 440 }]);
   const { Up, Down, Left, Right } = Direction;
   const { Running } = GameState;
   const { moveUp, moveDown, moveLeft, moveRight } = createSnakeMovements();
@@ -65,19 +64,6 @@ const useGameLogic = ({
         threshold: canvasHeight,
       }),
     });
-
-    // setSnakeBody([
-    //   {
-    //     x: randomPositionOnGrid({
-    //       gridSize: SEGMENT_SIZE,
-    //       threshold: canvasWidth,
-    //     }),
-    //     y: randomPositionOnGrid({
-    //       gridSize: SEGMENT_SIZE,
-    //       threshold: canvasHeight,
-    //     }),
-    //   },
-    // ]);
   }, [canvasHeight, canvasWidth]);
 
   const onKeyDownHandler = (e) => {
@@ -125,31 +111,6 @@ const useGameLogic = ({
       setDirection(Right);
     }
   };
-
-  // const navButtonHandler = (num) => {
-  //   switch (num) {
-  //     case 1:
-  //       if (direction !== Direction.Down) {
-  //         setDirection(Up);
-  //       }
-  //       break;
-  //     case 2:
-  //       if (direction !== Direction.Up) {
-  //         setDirection(Down);
-  //       }
-  //       break;
-  //     case 3:
-  //       if (direction !== Direction.Right) {
-  //         setDirection(Left);
-  //       }
-  //       break;
-  //     case 4:
-  //       if (direction !== Direction.Left) {
-  //         setDirection(Right);
-  //       }
-  //       break;
-  //   }
-  // };
 
   const moveSnake = () => {
     let snakeBodyAfterMovement;
