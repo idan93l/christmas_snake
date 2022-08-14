@@ -1,7 +1,8 @@
 // ( 1 ) ---------------------------------------------------------------------------------------------------------
 //         (I) - I developed the game as a web app with React, and i used png images and sounds with
 //               Christmas vibes that i found on google.
-//         (II) - The player can decide if the game ends when the snake hit the walls.
+//         (II) Things I would like to add in the future:
+//              - The player can decide if the game ends when the snake hit the walls.
 //              - The player can change the snake speed.
 //              - abillity to get higher points if the modes (like higher speed..) are harder
 //              - different "foods" - some of them add more points than the others and some
@@ -14,7 +15,7 @@
 
 // ( 2 ) ---------------------------------------------------------------------------------------------------------
 //         (a) - In order to get gameWon to be true, the player needs to get more than 4 created elements,
-//               and more than 2 destroyed elemnts, only if the last touched element is the Yellow square.
+//               and more than 2 destroyed elements, only if the last touched element is the Yellow square.
 //         (b) -
 //               [Touch sequence 1]: Red square, blue square, wait 1 seconds, green square, red square.
 //               [Touch sequence 2]: Red square, blue square, wait 1 seconds, red square, green square.
