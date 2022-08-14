@@ -23,7 +23,6 @@
 // ( 3 ) ---------------------------------------------------------------------------------------------------------
 
 //  Iterative way to reverse a string
-
 const reverseString1 = (string) => {
   let reversedString = "";
   const stringLength = string.length - 1;
@@ -66,7 +65,6 @@ const matrixFunc = (matrix) => {
   return evenColumnsSum > oddRowsSum ? "Valid" : "Not valid";
 };
 // --------(b)-------------------------------------------------
-
 
 // --------(c)-------------------------------------------------
 // To be honest, I'm not quite sure about that. With the help of the Construct debugger,
