@@ -2,11 +2,7 @@ import { useState, useRef } from "react";
 import * as Tone from "tone";
 import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
-import {
-  GameWrapper,
-  MiddleWrapper,
-  PlayButton,
-} from "./Game.style";
+import { GameWrapper, MiddleWrapper, PlayButton } from "./Game.style";
 import { Score, ScoreWrapper } from "./Score.style";
 import useGameLogic from "./useGameLogic";
 import {
@@ -87,13 +83,23 @@ const Game = () => {
             <h1>Christmas Snake</h1>
             <br />
             <div>
-            <p>Press the start button <br /><br /> down below to play! </p>
-            <br />
-            <br />
-            <p>If you have a keyboard, <br /><br /> you can use the arrow keys <br /><br /> to move the snake.</p>
-            <br />
-            <br />
-            <p>You lose only if the snake <br /><br /> eat itself.</p>
+              <p>
+                Press the start button <br />
+                <br /> down below to play!{" "}
+              </p>
+              <br />
+              <br />
+              <p>
+                If you have a keyboard, <br />
+                <br /> you can use the arrow keys <br />
+                <br /> to move the snake.
+              </p>
+              <br />
+              <br />
+              <p>
+                You lose only if the snake <br />
+                <br /> eat itself.
+              </p>
             </div>
           </div>
         ) : (

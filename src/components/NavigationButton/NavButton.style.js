@@ -1,6 +1,4 @@
 import styled from "styled-components";
-// import responsivity from "../responsivity/responsivity"
-// const { mobileS, mobileM, mobileL, tablet, laptop, laptopL, desktop, desktopL } = responsivity;
 
 export const NavButtonsWrapper = styled.div`
   height: 160px;
