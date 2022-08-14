@@ -1,5 +1,27 @@
 import styled from "styled-components";
 
+export const GameIntroduction = styled.canvas`
+  height: 340px;
+  width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 3px solid whitesmoke;
+  border-radius: 5px;
+  background-color: rgba(85, 4, 4, 0.826);
+  outline: 3px solid rgb(192,20,58);
+  box-shadow: 0 0 0 6px rgb(105,168,151);
+  font-size: 14px;
+  color: whitesmoke;
+
+  @media (min-width: 800px) { 
+    height: 500px;
+    width: 500px;
+    display: none;
+  }
+`
+
 export const GameWrapper = styled.div`
   height: 85vh;
   width: 100vw;

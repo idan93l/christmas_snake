@@ -2,7 +2,11 @@ import { useState, useRef } from "react";
 import * as Tone from "tone";
 import Canvas from "../Canvas/Canvas";
 import draw from "../Canvas/draw";
-import { GameWrapper, MiddleWrapper, PlayButton } from "./Game.style";
+import {
+  GameWrapper,
+  MiddleWrapper,
+  PlayButton,
+} from "./Game.style";
 import { Score, ScoreWrapper } from "./Score.style";
 import useGameLogic from "./useGameLogic";
 import {
@@ -17,6 +21,7 @@ import {
   TbArrowBigTop,
 } from "react-icons/tb";
 import { useEffect } from "react";
+import "./Game.css";
 
 export const GameState = {
   Start: "Start",
@@ -38,7 +43,7 @@ const Game = () => {
     if (gameState === Game_Over) {
       gameOverSound.start();
     }
-  }, [gameState])
+  }, [gameState]);
 
   const handleSetScore = () => {
     if (score > Number(localStorage.getItem("snakeScore"))) {
@@ -48,7 +53,6 @@ const Game = () => {
 
   const onGameOver = () => {
     handleSetScore();
-    setScore(0);
     setGameState(Game_Over);
   };
 
@@ -78,13 +82,31 @@ const Game = () => {
   return (
     <>
       <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
-        <Canvas ref={canvasRef} draw={drawGame} />
+        {gameState === Start ? (
+          <div className="GameIntro">
+            <h1>Christmas Snake</h1>
+            <br />
+            <div>
+            <p>Press the start button <br /><br /> down below to play! </p>
+            <br />
+            <br />
+            <p>If you have a keyboard, <br /><br /> you can use the arrow keys <br /><br /> to move the snake.</p>
+            <br />
+            <br />
+            <p>You lose only if the snake <br /><br /> eat itself.</p>
+            </div>
+          </div>
+        ) : (
+          <Canvas ref={canvasRef} draw={drawGame} />
+        )}
+
         <MiddleWrapper>
           {gameState === Game_Over ? (
             <PlayButton
               onClick={() => {
                 setGameState(Running);
                 resetGameState();
+                setScore(0);
                 handleRight();
                 startSong.start();
               }}
@@ -128,9 +150,9 @@ const Game = () => {
             <NavButton onClick={handleLeft}>
               <TbArrowBigLeft />
             </NavButton>
-          <NavButton onClick={handleDown}>
-            <TbArrowBigDown />
-          </NavButton>
+            <NavButton onClick={handleDown}>
+              <TbArrowBigDown />
+            </NavButton>
             <NavButton onClick={handleRight}>
               <TbArrowBigRight />
             </NavButton>

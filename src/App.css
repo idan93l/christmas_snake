@@ -10,22 +10,6 @@ body {
 	background-image: url("./assests/christmas_background.png");
 }
 
-/* .AppContainer {
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-} */
-
-.testingColors {
-	color: rgba(23, 22, 22, 0.9);
-	color: rgb(85, 4, 4);
-}
-
 #present, #snake {
-	/* height:100px;
-	width: 100px; */
 	display: none;
 }
