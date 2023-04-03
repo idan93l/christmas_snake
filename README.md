@@ -21,7 +21,7 @@ ReactJS, Styled-Components, ToneJS, react-tsparticles, HTML, CSS, VanillaJS.
 
 #### Mobile
 
-![App Screenshot](/src/assests/christmas_snake_mobile.jpg)
+![App Screenshot](https://i.ibb.co/drKTRyS/snake-mobile.jpg)
 
 
 ## Run Locally
